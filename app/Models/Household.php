@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Household extends Model
 {
-    protected $fillable = ["name", "user_id"]; // define which fields can be filled through forms
+    protected $fillable = ["household_name", "address", "smart_meter_id"]; // define which fields can be filled through forms
 
     // Specifying how the households table is connected to other tables
     // Relationship with user model

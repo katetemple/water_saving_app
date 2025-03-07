@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('households', function (Blueprint $table) {
             $table->id();
-            $table->string("name"); // name of the household
-            $table->unsignedBigInteger("user_id");  // ID of use who created the household
+            $table->string("household_name"); // name of the household
+            $table->string("address");
+            $table->unsignedBigInteger("smart_meter_id")->unique();  // Unique ID of smart meter
             $table->timestamps();
-
-            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade"); // if user deleted, associated household is also removed
         });
     }
 
