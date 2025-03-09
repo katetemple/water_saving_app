@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('households', function (Blueprint $table) {
+        Schema::create('water_usages', function (Blueprint $table) {
             $table->id();
-            $table->string("household_name"); // name of the household
-            $table->string("address");
-            $table->string("smart_meter_id")->unique();  // Unique ID of smart meter
+            $table->float("litres_used");
+            $table->date("usage_date");
+            $table->foreignId("household_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('households');
+        Schema::dropIfExists('water_usages');
     }
 };

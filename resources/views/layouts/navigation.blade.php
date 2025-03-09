@@ -15,6 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    
+                    <!-- Household Create Form Link -->
+                    <x-nav-link :href="route('households.create')" :active="request()->routeIs('households.create')">
+                        {{ __('Create a Household') }}
+                    </x-nav-link>
                 </div>
             </div>
 

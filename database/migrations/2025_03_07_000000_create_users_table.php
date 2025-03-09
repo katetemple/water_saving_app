@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('household_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('household_id')->references('id')->on('households')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -45,5 +47,10 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['household_id']);
+            $table->dropColumn('household_id');
+        });
     }
 };
