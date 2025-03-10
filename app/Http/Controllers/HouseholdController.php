@@ -50,9 +50,6 @@ class HouseholdController extends Controller
         $user->save(); // save the updated user model
 
         return redirect()->route("households.create")->with("success", "Household created successfully");
-
-
-
     }
 
     /**

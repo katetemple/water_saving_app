@@ -17,4 +17,8 @@ class Household extends Model
     public function user() {
         return $this->belongsTo(User::class); // using belongsTo() = each household is owned by a user
     }
+
+    public function leaderboards() {
+        return $this->belongsToMany(Leaderboard::class);
+    }
 }
