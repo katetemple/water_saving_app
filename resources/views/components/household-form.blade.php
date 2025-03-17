@@ -1,7 +1,5 @@
-@props(['action'])
-
-<form action="{{ $action }}" method="POST" enctype="multipart/form-data">
-
+<form action="{{ route('households.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="mb-4">
         <label for="household_name">Household Name:</label>
         <input type="text" id="household_name" name="household_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>

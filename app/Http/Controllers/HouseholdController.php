@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Household;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HouseholdController extends Controller
 {
@@ -39,8 +40,12 @@ class HouseholdController extends Controller
             "smart_meter_id" => "required|unique:households"
         ]);
 
-        // Create new household
-        Household::create($request->all());
+        // Create household
+        $household = Household::create([
+            "household_name" => $request->household_name,
+            "address" => $request->address,
+            "smart_meter_id" => $request->smart_meter_id
+        ]);
 
         // get currently logged in user
         $user = Auth::user();
@@ -49,7 +54,7 @@ class HouseholdController extends Controller
         $user->household_id = $household->id;
         $user->save(); // save the updated user model
 
-        return redirect()->route("households.create")->with("success", "Household created successfully");
+        return redirect()->route('dashboard')->with('success', 'Household created!');
     }
 
     /**
