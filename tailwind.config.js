@@ -18,4 +18,5 @@ export default {
     },
 
     plugins: [forms],
+    // darkMode: 'class', // Enables dark mode toggling via a CSS class
 };

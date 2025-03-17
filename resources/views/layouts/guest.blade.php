@@ -14,17 +14,25 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <body class="bg-gradient-to-bl from-[#3F72AF] to-[#2E527D] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+        <!-- LOGIN/SIGN IN CONTAINER -->
+        <div class="flex items-center justify-center w-full opacity-100 lg:grow">
+            <div class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row bg-white shadow-lg rounded-2xl">
+                <!-- Log in/ Sign in form -->
+                <div class="flex-1 p-6 pb-12 lg:p-20">
+                    <img src="images/LogoWhiteBg.png" class="w-20 pb-5">
+                    {{ $slot }}
+                </div>
+                <!-- Image -->
+                <div class="bg-[#fff2f2] relative lg:-ml-px -mb-px lg:mb-0 rounded-2xl lg:aspect-auto w-full lg:w-[438px] overflow-hidden">
+                    <img src="images/welcomeIllustration.png" class="w-full h-full object-cover" />
+                </div>
             </div>
         </div>
+
+        @if (Route::has('login'))
+            <div class="h-14.5 hidden lg:block"></div>
+        @endif
     </body>
 </html>
