@@ -1,3 +1,4 @@
+@vite(['resources/js/app.js'])
 <x-app-layout>
     <!-- <x-alert-success>
         {{ session('success')}}
@@ -19,25 +20,57 @@
                 </div>
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Usage Date</th>
-                                <th>Litres Used</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($usageData as $usage)
-                            <tr>
-                                <td>{{ \Carbon\Carbon::parse($usage->usage_date)->format('d M Y') }}</td>
-                                <td>{{ $usage->litres_used }} L</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                <canvas id="waterUsageChart" style="width: 100%; height: 400px"></canvas>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // fetch data
+            const usageLabels = @json($usageData->pluck('usage_date')->map(fn($date) => \Carbon\Carbon::parse($date)->format('d M Y')));
+            const usageValues = @json($usageData->pluck('litres_used'));
+
+            console.log("Labels:", usageLabels);
+            console.log("Labels:", usageValues);
+
+            //get chart context
+            const ctx = document.getElementById("waterUsageChart").getContext("2d");
+
+            //create line chart
+            new Chart (ctx, {
+                type: "line",
+                data: {
+                    labels: usageLabels, // X-axis labels (dates)
+                    datasets: [{
+                        label: "Water Usage (Litres)",
+                        data: usageValues, // Y axis data (litres used)
+                        borderColor: "blue",
+                        backgroundColor: "rgba(0, 0, 255, 0.2)",
+                        fill: true
+                }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "Litres Used"
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Date"
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </x-app-layout>
