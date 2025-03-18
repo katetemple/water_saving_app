@@ -20,6 +20,13 @@
                     <x-nav-link :href="route('households.create')" :active="request()->routeIs('households.create')">
                         {{ __('Create a Household') }}
                     </x-nav-link>
+
+                    @if (auth()->user()->household_id)
+                    <!-- View usage page -->
+                    <x-nav-link :href="route('view.usage')" :active="request()->routeIs('view.usage')">
+                        {{ __('View Household Usage') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

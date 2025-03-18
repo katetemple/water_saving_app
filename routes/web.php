@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HouseholdController;
+use App\Http\Controllers\WaterUsageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('households', HouseholdController::class);
 
     // route for the View Usage page with authentication middleware
-    Route::get('/view-usage', [HouseholdController::class, 'viewUsage'])->name('view.usage')->middleware('auth');
+    Route::get('/view-usage', [WaterUsageController::class, 'viewUsage'])->name('view.usage');
 });
 
 require __DIR__.'/auth.php';

@@ -3,10 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\WaterUsage;
+use App\Models\Household;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WaterUsageController extends Controller
 {
+
+    public function viewUsage()
+    {
+        $user = Auth::user(); // get currently logged in user
+
+        // fetch the household data using the household_id from the user
+        $household = Household::find($user->household_id);
+
+        // get water usage dtaa from the correct table for the users household
+        $usageData = WaterUsage::where('household_id', $household->id)->get();
+
+        // pass household and usage data to the view
+        return view('view-usage', compact('household', 'usageData'));
+    }
+
     /**
      * Display a listing of the resource.
      */
