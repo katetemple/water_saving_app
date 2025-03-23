@@ -19,16 +19,31 @@ class WaterUsageController extends Controller
         // fetch the household data using the household_id from the user
         $household = Household::find($user->household_id);
 
-        // get water usage dtaa from the correct table for the users household
-        // $usageData = WaterUsage::where('household_id', $household->id)->get();
-
-        $usageData = DB::table('water_usages')
+        //sorts data by month
+        $monthlyData = DB::table('water_usages')
             ->selectRaw("DATE_FORMAT(usage_date, '%Y-%m') as month, SUM(litres_used) as total_litres")
             ->where('household_id', $household->id)
             ->groupBy('month')
             ->orderBy('month', 'asc')
             ->get();
 
+        //sorts data by day
+        $dailyData = DB::table('water_usages')
+            ->selectRaw("DATE(usage_date) as date, SUM(litres_used) as total_litres")
+            ->where('household_id', $household->id)
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
+            ->get();
+
+        //sorts data by week
+        $weeklyData = DB::table('water_usages')
+            ->selectRaw("YEARWEEK(usage_date, 3) as year_week, SUM(litres_used) as total_litres")
+            ->where('household_id', $household->id)
+            ->groupBy('year_week')
+            ->orderBy('year_week', 'asc')
+            ->get();
+
+        // current and previous month
         $currentMonth = Carbon::now()->format('Y-m');
         $previousMonth = Carbon::now()->subMonth()->format('Y-m');
 
@@ -44,8 +59,19 @@ class WaterUsageController extends Controller
 
         $litresSaved = $previousUsage - $currentUsage;
 
+        $totalLitres = DB::table('water_usages')
+            ->where('household_id', $household->id)
+            ->sum('litres_used');
+
+        $totalDays = DB::table('water_usages')
+            ->where('household_id', $household->id)
+            ->distinct()
+            ->count('usage_date');
+
+        $averagePerDay = round($totalLitres / $totalDays, 1);
+
         // pass household and usage data to the view
-        return view('view-usage', compact('household', 'usageData', 'currentUsage', 'previousUsage', 'litresSaved'));
+        return view('view-usage', compact('household', 'monthlyData', 'dailyData', 'weeklyData', 'currentUsage', 'previousUsage', 'litresSaved', 'averagePerDay'));
     }
 
     /**
