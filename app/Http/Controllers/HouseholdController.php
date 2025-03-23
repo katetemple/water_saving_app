@@ -65,20 +65,6 @@ class HouseholdController extends Controller
         //
     }
 
-    public function viewUsage()
-    {
-        $user = Auth::user(); // get currently logged in user
-
-        // fetch the household data using the household_id from the user
-        $household = Household::find($user->household_id);
-
-        // get water usage dtaa from the correct table for the users household
-        $usageData = WaterUsage::where('household_id', $household->id)->get();
-
-        // pass household and usage data to the view
-        return view('view-usage', compact('household', 'usageData'));
-    }
-
     /**
      * Show the form for editing the specified resource.
      */

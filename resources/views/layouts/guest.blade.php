@@ -21,7 +21,7 @@
             <div class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row bg-white shadow-lg rounded-2xl">
                 <!-- Log in/ Sign in form -->
                 <div class="flex-1 p-6 pb-12 lg:p-20">
-                    <img src="images/LogoWhiteBg.png" class="w-20 pb-5">
+                    <img src="images/full_logo.png" class="w-20 pb-5">
                     {{ $slot }}
                 </div>
                 <!-- Image -->

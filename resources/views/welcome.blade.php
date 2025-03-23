@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Driply</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -26,8 +27,8 @@
         <div class="flex items-center justify-center w-full opacity-100 lg:grow">
             <div class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row bg-white shadow-lg rounded-2xl">
                 <div class="flex-1 p-6 pb-12 lg:p-20">
-                    <img src="images/LogoWhiteBg.png" class="w-20 pb-5">
-                    <h1 class="mb-1 font-medium text-3xl pb-5">Welcome to Driply!</h1>
+                    <img src="images/full_logo.png" class="w-24 pb-8">
+                    <h1 class="mb-1 font-semibold text-3xl pb-5">Welcome to Driply!</h1>
                     <p class="mb-2 text-[#706f6c] pb-5">Track, manage, and optimise your water consumption effortlessly.</p>
                     
                     @if (Route::has('login'))

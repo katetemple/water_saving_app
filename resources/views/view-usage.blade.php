@@ -22,6 +22,21 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <canvas id="waterUsageChart" style="width: 100%; height: 400px"></canvas>
             </div>
+            <div class="bg-white rounded-lg shadow p-6 mt-6 max-w-sm">
+                <h3 class="text-lg font-semibold text-gray-700 mb-2">Water Saved This Month</h3>
+
+                @if ($previousUsage > 0)
+                    @if ($litresSaved > 0)
+                        <p class="text-green-600 text-2xl font-bold flex items-center">{{ $litresSaved }} L saved</p>
+                        <p class="text-sm text-gray-500 mt-1">Compared to last month ({{ $previousUsage }} L)</p>
+                    @elseif ($litresSaved < 0)
+                        <p class="text-red-600 text-2xl font-bold flex items-center">{{ abs($litresSaved) }} L more used</p>
+                        <p class="text-sm text-gray-500 mt-1">Try to use less than {{ $previousUsage }} L next month</p>
+                    @else
+                        <p class="text-gray-600 text-xl font-semibold">Same as last month</p>
+                    @endif
+                @endif  
+            </div>
         </div>
     </div>
 
@@ -29,8 +44,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // fetch data
-            const usageLabels = @json($usageData->pluck('usage_date')->map(fn($date) => \Carbon\Carbon::parse($date)->format('d M Y')));
-            const usageValues = @json($usageData->pluck('litres_used'));
+            const usageLabels = @json($usageData->pluck('month')->map(fn($m) => \Carbon\Carbon::parse($m)->format('M Y')));
+            const usageValues = @json($usageData->pluck('total_litres'));
 
             console.log("Labels:", usageLabels);
             console.log("Labels:", usageValues);
