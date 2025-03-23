@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function household() {
+        return $this->belongsTo(Household::class);
+    }
+
+    public function receivedInvited() {
+        return $this->hasMany(Invitation::class, 'receiver_id');
+    }
+
+    public function sentInvited() {
+        return $this->hasMany(Invitation::class, 'sender_id');
+    }
 }

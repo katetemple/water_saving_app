@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo  />
                     </a>
                 </div>
 
@@ -15,11 +15,6 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    
-                    <!-- Household Create Form Link -->
-                    <x-nav-link :href="route('households.create')" :active="request()->routeIs('households.create')">
-                        {{ __('Create a Household') }}
-                    </x-nav-link>
 
                     @if (auth()->user()->household_id)
                     <!-- View usage page -->
@@ -27,6 +22,16 @@
                         {{ __('View Household Usage') }}
                     </x-nav-link>
                     @endif
+
+                    <x-nav-link :href="route('leaderboards.index')" :active="request()->routeIs('leaderboards.index')">
+                        {{ __('Leaderboards') }}
+                    </x-nav-link>
+                    
+                    <!-- Household Create Form Link -->
+                    <x-nav-link :href="route('households.create')" :active="request()->routeIs('households.create')">
+                        {{ __('Create a Household') }}
+                    </x-nav-link>
+                    
                 </div>
             </div>
 

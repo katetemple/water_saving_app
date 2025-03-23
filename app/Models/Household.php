@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Household extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         "household_name",
         "address", 
@@ -19,6 +22,10 @@ class Household extends Model
     }
 
     public function leaderboards() {
-        return $this->belongsToMany(Leaderboard::class);
+        return $this->belongsToMany(Leaderboard::class)->withTimestamps();
+    }
+
+    public function WaterUsages() {
+        return $this->hasMany(WaterUsage::class);
     }
 }
