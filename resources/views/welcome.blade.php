@@ -51,7 +51,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="bg-[#fff2f2] relative lg:-ml-px -mb-px lg:mb-0 rounded-2xl lg:aspect-auto w-full lg:w-[438px] overflow-hidden">
+                <div class="bg-[#ffffff] relative lg:-ml-px -mb-px lg:mb-0 rounded-2xl lg:aspect-auto w-full lg:w-[438px] overflow-hidden">
                     <img src="images/welcomeIllustration.png" />
                 </div>
             </div>

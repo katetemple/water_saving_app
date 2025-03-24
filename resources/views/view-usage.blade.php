@@ -39,28 +39,31 @@
                     <canvas id="waterUsageChart" style="width: 100%; height: 100%;"></canvas>
                 </div>
             </div>
-            <div class="bg-white rounded-3xl p-6 mt-6 max-w-sm">
-                <h3 class="text-lg font-semibold text-gray-700 mb-2">Water Saved This Month</h3>
 
-                @if ($previousUsage > 0)
-                    @if ($litresSaved > 0)
-                        <p class="text-green-600 text-2xl font-bold flex items-center">{{ $litresSaved }} L saved</p>
-                        <p class="text-sm text-gray-500 mt-1">Compared to last month ({{ $previousUsage }} L)</p>
-                    @elseif ($litresSaved < 0)
-                        <p class="text-red-600 text-2xl font-bold flex items-center">{{ abs($litresSaved) }} L more used</p>
-                        <p class="text-sm text-gray-500 mt-1">Try to use less than {{ $previousUsage }} L next month</p>
-                    @else
-                        <p class="text-gray-600 text-xl font-semibold">Same as last month</p>
-                    @endif
-                @endif  
-            </div>
-            <div class="bg-white rounded-3xl p-6 mt-6 max-w-sm">
-                <h3 class="text-lg font-semibold text-gray-700 mb-2">Average Per Day</h3>
-                <p class="text-blue-600 text-2xl font-bold flex items-center">{{ $averagePerDay }} L</p>
-            </div>
-            <div class="bg-white rounded-3xl p-6 mt-6 max-w-sm">
-                <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Usage this month</h3>
-                <p class="text-blue-600 text-2xl font-bold flex items-center">{{ $currentUsage }} L</p>
+            <div class="flex flex-wrap p-6 mb-4 justify-betwee">
+                <div class="bg-white rounded-3xl p-6 mt-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Water Saved This Month</h3>
+
+                    @if ($previousUsage > 0)
+                        @if ($litresSaved > 0)
+                            <p class="text-green-600 text-2xl font-bold flex items-center">{{ $litresSaved }} L saved</p>
+                            <p class="text-sm text-gray-500 mt-1">Compared to last month ({{ $previousUsage }} L)</p>
+                        @elseif ($litresSaved < 0)
+                            <p class="text-red-600 text-2xl font-bold flex items-center">{{ abs($litresSaved) }} L more used</p>
+                            <p class="text-sm text-gray-500 mt-1">Try to use less than {{ $previousUsage }} L next month</p>
+                        @else
+                            <p class="text-gray-600 text-xl font-semibold">Same as last month</p>
+                        @endif
+                    @endif  
+                </div>
+                <div class="bg-white rounded-3xl p-6 mt-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Average Per Day</h3>
+                    <p class="text-blue-600 text-2xl font-bold flex items-center">{{ $averagePerDay }} L</p>
+                </div>
+                <div class="bg-white rounded-3xl p-6 mt-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Usage this month</h3>
+                    <p class="text-blue-600 text-2xl font-bold flex items-center">{{ $currentUsage }} L</p>
+                </div>
             </div>
         </div>
     </div>
