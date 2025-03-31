@@ -27,6 +27,9 @@ class LeaderboardSeeder extends Seeder
             ]);
         });
 
+        $start = Carbon::now()->subDays(7);
+        $end = Carbon::now();
+
         // create leaderboard
         $leaderboard = Leaderboard::create([
             "leaderboard_name" => "March Showdown",

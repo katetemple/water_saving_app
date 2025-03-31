@@ -11,14 +11,14 @@
             @php
                 $rankings = $leaderboard->households->map(function($household) use ($leaderboard) {
                     $litresUsed = $household->waterUsages()
-                        ->whereBetween('created_at', [$leaderboard->start_date, $leaderboard->end_date])
+                        ->whereBetween('usage_date', [$leaderboard->start_date, $leaderboard->end_date])
                         ->sum('litres_used');
 
                     return [
-                        'household_name' => $household->name,
+                        'household_name' => $household->household_name,
                         'litres_used' => $litresUsed,
                     ];
-                })->sortBy('litresUsed')->values();
+                })->sortBy('litres_used')->values();
             @endphp
 
             @foreach($rankings as $index => $entry)
