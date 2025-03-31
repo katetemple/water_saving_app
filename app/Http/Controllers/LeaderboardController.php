@@ -39,13 +39,13 @@ class LeaderboardController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|string|max:255",
+            "leaderboard_name" => "required|string|max:255",
             "start_date" => "required|date",
             "end_date" => "required|date|after_or_equal:start_date",
         ]);
 
         $leaderboard = Leaderboard::create([
-            "name" => $request->name,
+            "leaderboard_name" => $request->leaderboard_name,
             "start_date" => $request->start_date,
             "end_date" => $request->end_date,
             "user_id" => auth()->id(),

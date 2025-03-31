@@ -7,12 +7,12 @@
 
     <div class="mb-4">
         <label for="start_date">Start Date:</label>
-        <input type="text" id="start_date" name="start_date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+        <input type="date" id="start_date" name="start_date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
     </div>
 
     <div class="mb-4">
         <label for="end_date">End Date:</label>
-        <input type="text" id="end_date" name="end_date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+        <input type="date" id="end_date" name="end_date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
     </div>
 
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Leaderboard</button>

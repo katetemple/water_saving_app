@@ -16,11 +16,17 @@
                 <a href="{{ route('leaderboards.create') }}"><x-primary-button class="ms-3">{{ __('+ Create New Leaderboard') }}</x-primary-button></a>
             </div>
         </div>
+    </div>
+        </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-4">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-3xl">
                 @foreach($leaderboards as $leaderboard)
                     <x-leaderboard-table :leaderboard="$leaderboard" />
+
+                    <div class="max-w-sm">
+                        <a href="{{ route('invites.create', $leaderboard) }}"><x-primary-button class="ms-3">{{ __('+ Invite User') }}</x-primary-button></a>
+                    </div>
                 @endforeach
             </div>
         </div>

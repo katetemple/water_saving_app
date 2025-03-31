@@ -31,6 +31,11 @@
                     <x-nav-link :href="route('households.create')" :active="request()->routeIs('households.create')">
                         {{ __('Create a Household') }}
                     </x-nav-link>
+
+                    <!-- Household Create Form Link -->
+                    <x-nav-link :href="route('leaderboard-invitations.index')" :active="request()->routeIs('leaderboard-invitations.index')">
+                        {{ __('Notifications') }}
+                    </x-nav-link>
                     
                 </div>
             </div>

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\DatabaseNotification;
 
 class User extends Authenticatable
 {
@@ -50,11 +51,7 @@ class User extends Authenticatable
         return $this->belongsTo(Household::class);
     }
 
-    public function receivedInvited() {
-        return $this->hasMany(Invitation::class, 'receiver_id');
-    }
-
-    public function sentInvited() {
-        return $this->hasMany(Invitation::class, 'sender_id');
+    public function notifications() {
+        return $this->morphMany(DatabaseNotification::class, 'notifiable');
     }
 }
