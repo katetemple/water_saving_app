@@ -1,5 +1,9 @@
+@props(['method']);
 <form action="{{ route('leaderboards.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @if($method === 'PUT' || $method === 'PATCH')
+        @method($method)
+    @endif
     <div class="mb-4">
         <label for="leaderboard_name">Leaderboard Name:</label>
         <input type="text" id="leaderboard_name" name="leaderboard_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>

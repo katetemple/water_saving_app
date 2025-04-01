@@ -36,7 +36,7 @@ class LeaderboardInvitationController extends Controller
         // send the notification
         $invitee->notify(new LeaderboardInvitationNotification($leaderboard, auth()->user()));
 
-        return back()->with('success', 'Invitation sent!');
+        return redirect()->route('leaderboards.index')->with('success', 'Invitation sent!');
     }
 
     public function respond (Request $request, $notificationId)

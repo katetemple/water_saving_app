@@ -70,7 +70,7 @@ class LeaderboardController extends Controller
      */
     public function edit(Leaderboard $leaderboard)
     {
-        //
+        return view('leaderboards.edit', compact('leaderboard'));
     }
 
     /**
@@ -78,7 +78,19 @@ class LeaderboardController extends Controller
      */
     public function update(Request $request, Leaderboard $leaderboard)
     {
-        //
+        $request->validate([
+            'leaderboard_name' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $leaderboard->update([
+            'leaderboard_name' => $request->leaderboard_name,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+
+        return redirect()->route('leaderboards.index')->with('success', 'Leaderboard updated successfully!');
     }
 
     /**
@@ -86,6 +98,8 @@ class LeaderboardController extends Controller
      */
     public function destroy(Leaderboard $leaderboard)
     {
-        //
+        $leaderboard->delete();
+
+        return redirect()->route('leaderboards.index')->with('success', 'Leaderboard deleted successfully');
     }
 }
