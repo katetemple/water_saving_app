@@ -25,16 +25,16 @@
                     @if(auth()->id() === $leaderboard->user_id)
                     <div class="flex">
                     <div class="max-w-sm mr-5">
-                        <a href="{{ route('invites.create', $leaderboard) }}"><x-primary-button class="mt-3">{{ __('Invite User') }}</x-primary-button></a>
+                        <a href="{{ route('invites.create', $leaderboard) }}"><x-primary-button class="mt-3">{{ __('Invite Users') }}</x-primary-button></a>
                     </div>
-                    <div class="max-w-sm mr-5">
+                    <!-- <div class="max-w-sm mr-5">
                         <a href="{{ route('leaderboards.edit', $leaderboard) }}"><x-primary-button class="mt-3">{{ __('Edit Leaderboard') }}</x-primary-button></a>
-                    </div>
+                    </div> -->
                     <div class="max-w-sm mr-5">
                         <form action="{{ route('leaderboards.destroy', $leaderboard) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <x-danger-button class="mt-3" onclick="return confirm('Are you sure you want to delete this Leaderboard?');">{{ __('Delete Leaderboard') }}</x-danger-button>
+                            <x-danger-button class="mt-4" onclick="return confirm('Are you sure you want to delete this Leaderboard?')">{{ __('Delete Leaderboard') }}</x-danger-button>
                         </form>
                     </div>
                     </div>

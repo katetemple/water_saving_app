@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('households', HouseholdController::class);
 
     // route for the View Usage page with authentication middleware
-    Route::get('/view-usage', [WaterUsageController::class, 'viewUsage'])->name('view.usage');
+    Route::get('/view-usage', [WaterUsageController::class, 'viewUsage'])->middleware('auth')->name('view.usage');
 
     Route::get('/leaderboards', [LeaderboardController::class, 'index'])->name('leaderboards.index');
     Route::get('/leaderboards/create', [LeaderboardController::class, 'create'])->name('leaderboards.create');
