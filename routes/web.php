@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/leaderboards/{leaderboard}', [LeaderboardController::class, 'destroy'])->middleware('auth')->name('leaderboards.destroy');
     Route::get('leaderboards/{leaderboard}/edit', [LeaderboardController::class, 'edit'])->name('leaderboards.edit');
     Route::put('/leaderboards/{leaderboard}', [LeaderboardController::class, 'update'])->name('leaderboards.update');
+    Route::patch('/leaderboards/{leaderboard}', [LeaderboardController::class, 'update'])->name('leaderboards.update');
 
     Route::get('/notifications', [LeaderboardInvitationController::class, 'index'])->name('leaderboard-invitations.index');
     Route::get('/leaderboards/{leaderboard}/invite', [LeaderboardInvitationController::class, 'create'])->middleware('auth')->name('invites.create');

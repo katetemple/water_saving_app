@@ -27,9 +27,9 @@
                     <div class="max-w-sm mr-5">
                         <a href="{{ route('invites.create', $leaderboard) }}"><x-primary-button class="mt-3">{{ __('Invite Users') }}</x-primary-button></a>
                     </div>
-                    <!-- <div class="max-w-sm mr-5">
+                    <div class="max-w-sm mr-5">
                         <a href="{{ route('leaderboards.edit', $leaderboard) }}"><x-primary-button class="mt-3">{{ __('Edit Leaderboard') }}</x-primary-button></a>
-                    </div> -->
+                    </div>
                     <div class="max-w-sm mr-5">
                         <form action="{{ route('leaderboards.destroy', $leaderboard) }}" method="POST">
                             @csrf

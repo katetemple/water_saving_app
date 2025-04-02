@@ -12,8 +12,7 @@
                     <h3 class="font-semibold text-lg mb-4">Edit Leaderboard:</h3>
 
                     <x-leaderboard-form
-                        :action="route('leaderboards.update', $leaderboard)"
-                        :method="'PATCH'"
+                        :method="'PUT'"
                         :leaderboard="$leaderboard"
                     />
                 </div>
