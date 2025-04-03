@@ -16,13 +16,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-200">
+        <div class="min-h-screen bg-gray-200 ">  <!-- bg-gradient-to-b from-[#0a192f] via-[#1e2a3a] to-[#3b4a5a] -->
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-gray-200 mt-5">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="mt-5">
+                    <div class="max-w-7xl mx-auto py-6 px-3 sm:px-3 lg:px-3">
                         {{ $header }}
                     </div>
                 </header>

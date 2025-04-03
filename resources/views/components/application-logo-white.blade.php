@@ -1,0 +1,1 @@
+<img src="images/full_logo_white.png" class="w-20 h-auto"/>
