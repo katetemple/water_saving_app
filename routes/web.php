@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
     Route::resource('households', HouseholdController::class);
+    Route::put('/households/{household}', [HouseholdController::class, 'update'])->name('households.update');
 
     // route for the View Usage page with authentication middleware
     Route::get('/view-usage', [WaterUsageController::class, 'viewUsage'])->middleware('auth')->name('view.usage');

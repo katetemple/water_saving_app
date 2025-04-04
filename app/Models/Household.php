@@ -28,4 +28,8 @@ class Household extends Model
     public function WaterUsages() {
         return $this->hasMany(WaterUsage::class);
     }
+
+    public function users() {
+        return $this->hasMany(User::class);
+    }
 }

@@ -34,7 +34,7 @@ class LeaderboardSeeder extends Seeder
         $leaderboard = Leaderboard::create([
             "leaderboard_name" => "March Showdown",
             "user_id" => User::first()->id,
-            "start_date" => Carbon::now()->subDays(7)->toDateString(),
+            "start_date" => Carbon::now()->toDateString(),
             "end_date" => Carbon::now()->toDateString(),
         ]);
 

@@ -54,7 +54,7 @@ class LeaderboardController extends Controller
         // attach the creator's household
         $leaderboard->households()->attach(auth()->user()->household_id);
 
-        return redirect()->route('dashboard')->with('success', 'Leaderboard Created!');
+        return redirect()->route('leaderboards.index')->with('success', 'Leaderboard Created!');
     }
 
     /**

@@ -5,15 +5,19 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Household;
 
 class HouseholdForm extends Component
 {
+
+    public $household;
+    
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($household = null)
     {
-        //
+        $this->household = $household;
     }
 
     /**

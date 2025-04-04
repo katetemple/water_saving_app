@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class=" px-6 py-4 bg-transparent text-white  backdrop-blur-md">
+<nav x-data="{ open: false }" class=" px-6 py-4 bg-white text-white  backdrop-blur-md">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -27,11 +27,12 @@
                         {{ __('Leaderboards') }}
                     </x-nav-link>
                     
+                    @unless(auth()->user()->household_id)
                     <!-- Household Create Form Link -->
                     <x-nav-link :href="route('households.create')" :active="request()->routeIs('households.create')">
                         {{ __('Create a Household') }}
                     </x-nav-link>
-                    
+                    @endunless
                 </div>
             </div>
 

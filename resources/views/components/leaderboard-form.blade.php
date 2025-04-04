@@ -10,10 +10,10 @@
         @method($method)
     @endif
     
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 p-9">
+    <div class="p-9">
 
     <!-- leaderboard name -->
-        <div>
+        <div class="mb-6 max-w-2xl">
             <label for="leaderboard_name" class="block text-sm font-medium text-gray-700">Leaderboard Name</label>
             <div class="mt-1 relative rounded-md shadow-sm">
                 <input 
@@ -28,11 +28,8 @@
             </div>
         </div>
 
-    <!-- Empty col for space -->
-        <div></div>
-
     <!-- Start date -->
-        <div>
+        <div class="mb-6 max-w-xs">
             <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
             <div class="mt-1 relative rounded-md shadow-sm">
                 <input 
@@ -46,7 +43,8 @@
             </div>
         </div>
 
-        <div>
+    <!-- End date -->
+        <div class="mb-6 max-w-xs">
             <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
             <div class="mt-1 relative rounded-md shadow-sm">
                 <input 
@@ -59,12 +57,8 @@
                 >
             </div>
         </div>
-
-        <div class="flex justify-end pt-6 border-t border-gray-200">
-            <
-        </div>
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <x-primary-button>
             {{ $method === 'POST' ? 'Create Leaderboard' : 'Update Leaderboard' }}
-        </button>
+        </x-primary-button>
     </div>
 </form>

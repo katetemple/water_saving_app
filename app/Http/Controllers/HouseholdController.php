@@ -70,7 +70,7 @@ class HouseholdController extends Controller
      */
     public function edit(Household $household)
     {
-        //
+        return view('households.edit', compact('household'));
     }
 
     /**
@@ -78,7 +78,19 @@ class HouseholdController extends Controller
      */
     public function update(Request $request, Household $household)
     {
-        //
+        $request->validate([
+            'household_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'smart_meter_id' => 'required|string',
+        ]);
+
+        $household->update([
+            'household_name' => $request->household_name,
+            'address' => $request->address,
+            'smart_meter_id' => $request->smart_meter_id,
+        ]);
+
+        return redirect()->route('profile.edit')->with('success', 'Household updated successfully!');
     }
 
     /**
@@ -86,6 +98,11 @@ class HouseholdController extends Controller
      */
     public function destroy(Household $household)
     {
-        //
+        // detach user from household
+        $household->users()->update(['household_id' => null]);
+
+        $household->delete();
+
+        return redirect()->route('dashboard');
     }
 }
